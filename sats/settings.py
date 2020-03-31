@@ -25,7 +25,7 @@ SECRET_KEY = 'g5ob0q97pp+g3mo3$%a4v6x&az7b7i2gdtgu%74#!mn%_v_)*o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,3 +133,9 @@ STATIC_URL = '/static/'
 
 
 SITE_ID = 1
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
