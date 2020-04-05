@@ -9,3 +9,6 @@ class Course(models.Model):
     def save(self, *args, **kwargs):
         self.code = self.code.upper()
         return super(Course, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.code + ' ' + self.name
