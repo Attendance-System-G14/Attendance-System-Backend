@@ -1,6 +1,6 @@
 from django.db import models
 
-from faculty.models import Faculty
+from faculty.models import Faculty, Department
 from student.models import Student
 
 DAYS_OF_WEEK = (
@@ -19,9 +19,6 @@ LECTURE_TYPES = (
 )
 
 # Create your models here.
-class Department(models.Model):
-    name = models.CharField(max_length=50)
-
 class Timeslot(models.Model):
     name = models.CharField(max_length=1, primary_key=True)
     

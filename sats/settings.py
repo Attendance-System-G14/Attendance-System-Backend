@@ -35,9 +35,9 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     #apps
     'auth_api',
+    'course',
     'student',
     'faculty',
-    'course',
     'attendance',
     #defaults
     'django.contrib.admin',

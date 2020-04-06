@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from course.models import Department
-
 # Create your models here.
+class Department(models.Model):
+    name = models.CharField(max_length=50)
 
 class Faculty(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)

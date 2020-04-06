@@ -7,7 +7,7 @@ from course.models import Course, Timeslot
 # Create your models here.
 class Attendance(models.Model):
     date = models.DateField()
-    time = models.TimeField(auto_now=True, auto_now_add=True)
+    time = models.TimeField(auto_now=True)
 
     student = models.ForeignKey(Student, null=True, on_delete=models.SET_NULL)
     faculty = models.ForeignKey(Faculty, null=True, on_delete=models.SET_NULL) 
