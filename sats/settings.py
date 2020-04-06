@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'student',
     'faculty',
     'course',
-    'attendace',
+    'attendance',
     #defaults
     'django.contrib.admin',
     'django.contrib.auth',
