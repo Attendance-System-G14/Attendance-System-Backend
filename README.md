@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/Attendance-System-G14/SATS-Backend/workflows/Django%20CI/badge.svg)](https://github.com/Attendance-System-G14/SATS-Backend/actions)
+
 ## Student Attendance Tracking System(Backend)
 
 The Student Attendance Tracking System is a complete package to mark the attendance of students enrolled in a course using camera clicked picture of the class.
