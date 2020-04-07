@@ -12,4 +12,7 @@ class Faculty(models.Model):
 
 class FacultyTakesCourse(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-    Course = models.ForeignKey('course.Course', on_delete=models.CASCADE)
+    course = models.ForeignKey('course.Course', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.course.__str__() + ' '  + self.faculty.__str__()  

@@ -15,16 +15,22 @@ LECTURE_TYPES = (
     (1, 'Tutorial')
 )
 
+# Create your models here.
 class Department(models.Model):
     name = models.CharField(max_length=50)
 
-# Create your models here.
+    def __str__(self):
+        return self.name
+
 class Timeslot(models.Model):
     name = models.CharField(max_length=1, primary_key=True)
     
     def save(self, *args, **kwargs):
         self.name = self.name.upper()
         return super(Timeslot, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
 
 class TimeSlotDetails(models.Model):
     timeslot = models.ForeignKey(Timeslot, on_delete=models.CASCADE)
@@ -33,6 +39,9 @@ class TimeSlotDetails(models.Model):
     start_time = models.TimeField(auto_now=False)
     end_time = models.TimeField(auto_now=False)
     lecture_type = models.CharField(max_length=1, choices=LECTURE_TYPES)
+
+    def __str__(self):
+        return self.timeslot.__str__() + ' '  + self.day + ' '  + str(self.start_time)
 
 class Course(models.Model):
     name = models.CharField(max_length=50)
