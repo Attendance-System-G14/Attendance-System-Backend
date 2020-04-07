@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from faculty.models import Faculty, Department
+from faculty.models import Faculty
+from course.models import Department
 
 class TestModels(TestCase):
 

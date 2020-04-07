@@ -48,7 +48,7 @@ class Course(models.Model):
     code = models.CharField(max_length=10)
     department = models.ForeignKey(Department, null=True, on_delete=models.SET_NULL)
    
-    course_coordinator = models.ForeignKey('faculty.Faculty', null=True, on_delete=models.CASCADE)
+    course_coordinator = models.ForeignKey('faculty.Faculty', null=True, on_delete=models.CASCADE)  #To avoid circular imports
     timeslot = models.ForeignKey(Timeslot, null=True, on_delete=models.SET_NULL)
 
 
