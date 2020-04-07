@@ -15,5 +15,5 @@ class UserDetailsSerializer(UserDetailsSerializer):
         try:
             Faculty.objects.get(user=instance)
             return 'faculty'
-        except:
+        except Faculty.DoesNotExist:
             return 'student'
