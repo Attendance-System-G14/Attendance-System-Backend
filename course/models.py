@@ -1,8 +1,5 @@
 from django.db import models
 
-from faculty.models import Faculty, Department
-from student.models import Student
-
 DAYS_OF_WEEK = (
     (0, 'Monday'),
     (1, 'Tuesday'),
@@ -17,6 +14,9 @@ LECTURE_TYPES = (
     (0, 'Lecture'),
     (1, 'Tutorial')
 )
+
+class Department(models.Model):
+    name = models.CharField(max_length=50)
 
 # Create your models here.
 class Timeslot(models.Model):
@@ -39,7 +39,7 @@ class Course(models.Model):
     code = models.CharField(max_length=10)
     department = models.ForeignKey(Department, null=True, on_delete=models.SET_NULL)
    
-    course_coordinator = models.ForeignKey(Faculty, null=True, on_delete=models.CASCADE)
+    course_coordinator = models.ForeignKey('faculty.Faculty', null=True, on_delete=models.CASCADE)
     timeslot = models.ForeignKey(Timeslot, null=True, on_delete=models.SET_NULL)
 
 
@@ -49,11 +49,3 @@ class Course(models.Model):
 
     def __str__(self):
         return self.code + ' ' + self.name
-
-class StudentTakesCourse(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-
-class FacultyTakesCourse(models.Model):
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
