@@ -14,3 +14,6 @@ class Attendance(models.Model):
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     timeslot = models.ForeignKey(Timeslot, null=True, on_delete=models.SET_NULL) 
+
+    def __str__(self):
+        return self.course.__str__() + ' ' + str(self.date) + ' ' + self.student.__str__()

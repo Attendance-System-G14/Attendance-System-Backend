@@ -26,6 +26,9 @@ class Timeslot(models.Model):
         self.name = self.name.upper()
         return super(Timeslot, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+
 class TimeSlotDetails(models.Model):
     timeslot = models.ForeignKey(Timeslot, on_delete=models.CASCADE)
 
@@ -33,6 +36,9 @@ class TimeSlotDetails(models.Model):
     start_time = models.TimeField(auto_now=False)
     end_time = models.TimeField(auto_now=False)
     lecture_type = models.CharField(max_length=1, choices=LECTURE_TYPES)
+
+    def __str__(self):
+        return self.timeslot.__str__() + ' '  + self.day + ' '  + str(self.start_time)
 
 class Course(models.Model):
     name = models.CharField(max_length=50)
@@ -54,6 +60,12 @@ class StudentTakesCourse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.course.__str__() + ' '  + self.student.__str__()  
+
 class FacultyTakesCourse(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.course.__str__() + ' '  + self.faculty.__str__()  

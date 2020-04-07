@@ -9,3 +9,5 @@ class Student(models.Model):
     entry_number = models.CharField(max_length=20)
     department = models.ForeignKey(Department, null=True, on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return self.user.__str__()
