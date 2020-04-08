@@ -15,5 +15,9 @@ class FacultyTakesCourse(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = (("faculty", "course"),)
+
+
     def __str__(self):
         return self.course.__str__() + ' '  + self.faculty.__str__()  

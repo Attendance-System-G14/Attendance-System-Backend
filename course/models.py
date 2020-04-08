@@ -45,7 +45,7 @@ class TimeSlotDetails(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=50)
-    code = models.CharField(max_length=10)
+    code = models.CharField(max_length=10, primary_key=True)
     department = models.ForeignKey(Department, null=True, on_delete=models.SET_NULL)
    
     course_coordinator = models.ForeignKey('faculty.Faculty', null=True, on_delete=models.CASCADE)  #To avoid circular imports
