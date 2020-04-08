@@ -8,6 +8,7 @@ class TestModels(TestCase):
     def setUp(self):
         user_name1= 'Balwinder Sodhi'
         user_email1= 'sodhi@iitrpr.ac.in'
+        department_name1= 'Computer Science and Engineering'
 
         self.user1= User.objects.create_user(
             username= user_name1, 
@@ -15,7 +16,7 @@ class TestModels(TestCase):
             password= '',)
 
         self.department1= Department.objects.create(
-            name= "Computer Science and Engineering"
+            name= department_name1,
         )
 
         self.faculty1= Faculty.objects.create(
@@ -25,4 +26,4 @@ class TestModels(TestCase):
 
 
     def test_faculty_str(self):
-        self.assertEquals(self.faculty1.__str__(), self.user1.__str__(), 'Error in __str__() of Faculty Class')
+        self.assertEqual(self.faculty1.__str__(), self.user1.__str__(), 'Error in __str__() of Faculty Class')

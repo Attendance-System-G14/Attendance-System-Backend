@@ -19,5 +19,5 @@ class StudentTakesCourse(models.Model):
         unique_together = (("student", "course"),)
 
     def __str__(self):
-        return self.course.__str__() + ' '  + self.student.__str__()  
+        return self.course.__str__() + ' '  + self.student.__str__()
 

@@ -41,7 +41,7 @@ class TimeSlotDetails(models.Model):
     lecture_type = models.CharField(max_length=1, choices=LECTURE_TYPES)
 
     def __str__(self):
-        return self.timeslot.__str__() + ' '  + self.day + ' '  + str(self.start_time)
+        return self.timeslot.__str__() + ' '  + str(self.day) + ' '  + str(self.start_time)
 
 class Course(models.Model):
     name = models.CharField(max_length=50)
