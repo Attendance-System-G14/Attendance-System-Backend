@@ -6,8 +6,7 @@ from course.models import Course, Timeslot
 
 # Create your models here.
 class Attendance(models.Model):
-    date = models.DateField()
-    time = models.TimeField(auto_now=True)
+    date_time = models.DateTimeField(auto_now=True)
 
     student = models.ForeignKey(Student, null=True, on_delete=models.SET_NULL)
     faculty = models.ForeignKey(Faculty, null=True, on_delete=models.SET_NULL) 
@@ -16,7 +15,7 @@ class Attendance(models.Model):
     timeslot = models.ForeignKey(Timeslot, null=True, on_delete=models.SET_NULL) 
 
     class Meta:
-        unique_together = (("date", "time", "student", "course"),)
+        unique_together = (("date_time", "student", "course"),)
 
     def __str__(self):
-        return self.course.__str__() + ' ' + str(self.date) + ' '  + self.student.__str__()
+        return self.course.__str__() + ' ' + str(self.date_time) + ' '  + self.student.__str__()
