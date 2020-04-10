@@ -8,10 +8,18 @@ class TestModels(TestCase):
     def setUp(self):
         objects_for_tests.variables()
 
-    def test_attendance_str_(self):
+    def test_attendance_str(self):
         self.assertEqual(
             objects_for_tests.attendance1.__str__(),
             objects_for_tests.course1_code.upper()+ ' '+ objects_for_tests.course1_name+ ' '+
-                str(objects_for_tests.date_time1)+ ' '+ objects_for_tests.student_user1.__str__(),
+                str(objects_for_tests.date_time1)+ ' '+ objects_for_tests.faculty_user1.__str__(),
             'Error in test for Attendance class in attendance app'
+        )
+
+    def test_attendance_students_str(self):
+        self.assertEqual(
+            objects_for_tests.attendance1_student.__str__(),
+            objects_for_tests.student_user1.__str__() + ' ' + objects_for_tests.course1_code.upper()+ ' '+ objects_for_tests.course1_name+ ' '+
+                str(objects_for_tests.date_time1)+ ' '+ objects_for_tests.faculty_user1.__str__(),
+            'Error in test for AttendanceStudents class in attendance app'          
         )

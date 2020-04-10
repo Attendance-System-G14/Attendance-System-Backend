@@ -36,4 +36,7 @@ class AttendanceImage(models.Model):
 class AttendanceStudents(models.Model):
     attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.student.__str__() + ' ' + self.attendance.__str__()
  

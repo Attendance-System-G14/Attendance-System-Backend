@@ -2,12 +2,12 @@ from django.contrib.auth.models import User
 from student.models import Student
 from faculty.models import Faculty
 from course.models import Course, Department, Timeslot, TimeSlotDetails
-from attendance.models import Attendance
+from attendance.models import Attendance, AttendanceImage, AttendanceStudents
 
 import datetime
 
 def variables():
-    #create a user to be used as student
+    # Create a user to be used as student
     global student_user1_name
     student_user1_name= 'Adarsh Kumar'
     global student_user1_email
@@ -22,7 +22,7 @@ def variables():
         password= student_user1_password,
     )
 
-    #create a user to be used as a faculty
+    # Create a user to be used as a faculty
     global faculty_user1_name
     faculty_user1_name= 'Balwinder Sodhi'
     global faculty_user1_email
@@ -37,7 +37,7 @@ def variables():
         password= faculty_user1_password,
     )
 
-    #create Department Object
+    # Create Department Object
     global department_name1
     department_name1= 'Computer Science and Engineering'
 
@@ -46,7 +46,7 @@ def variables():
         name= department_name1,
     )
 
-    #create timeslot object
+    # Create timeslot object
     global timeslot1_name
     timeslot1_name= 'a'
     global timeslot1
@@ -54,7 +54,7 @@ def variables():
         name= timeslot1_name,
     )
 
-    #create timeslot details object
+    # Create timeslot details object
     global timeslot1_day
     timeslot1_day= 1
     global timeslot1_start_time
@@ -72,7 +72,7 @@ def variables():
         lecture_type= lecture1_type
     )
 
-    #create student object
+    # Create student object
     global student1_entry_number
     student1_entry_number= '2017csb1064'
     global student1
@@ -82,14 +82,14 @@ def variables():
         department= department1,
     )
 
-    #create faculty object
+    # Create faculty object
     global faculty1
     faculty1= Faculty.objects.create(
         user= faculty_user1,
         department= department1,
     )
 
-    #create course object
+    # Create course object
     global course1_name
     course1_name= 'Software Engineering'
     global course1_code
@@ -104,7 +104,7 @@ def variables():
         timeslot= timeslot1
     )
 
-    #create Attendance object
+    # Create Attendance object
     date_str = "2020-04-10"
     global date_time1
     date_time1= datetime.datetime(
@@ -118,10 +118,19 @@ def variables():
     global attendance1
     attendance1= Attendance.objects.create(
         date_time= date_time1,
-        student= student1,
         faculty= faculty1,
         course= course1,
         timeslot= timeslot1,
+    )
+
+    # Create AttendanceImage object
+    
+
+    # Create AttendanceStudent object
+    global attendance1_student
+    attendance1_student = AttendanceStudents.objects.create(
+        attendance = attendance1,
+        student = student1,
     )
 
 if __name__ == "__main__":
