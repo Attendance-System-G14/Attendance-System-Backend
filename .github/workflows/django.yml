@@ -3,9 +3,19 @@ name: Django CI
 on: [push]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     strategy:
       max-parallel: 4
       matrix:
@@ -21,9 +31,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Create Environment file
-      run: |
-        cp .env.dev .env
     - name: Run Tests
+      env:
+        ENV: DEV
+        DJANGO_SECRET_KEY: g5ob0q97pp+g3mo3$%a4v6x&az7b7i2gdtgu%74#!mn%_v_)*o
+        DB_ENGINE: django.db.backends.postgresql
+        DB_NAME: postgres
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_HOST: db
+        DB_PORT: 5432
       run: |
         python manage.py test
