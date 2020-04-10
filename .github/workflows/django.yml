@@ -55,4 +55,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: sats14/sats-backend
         tag_with_sha: true
-        dockerfile: ./Dockerfile
+        dockerfile: ../../Dockerfile
