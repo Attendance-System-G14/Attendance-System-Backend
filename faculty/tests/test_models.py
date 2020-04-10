@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from faculty.models import Faculty
 from course.models import Department
 
-import objects_for_tests
+import test_data.objects_for_tests as objects_for_tests
 
 class TestModels(TestCase):
 

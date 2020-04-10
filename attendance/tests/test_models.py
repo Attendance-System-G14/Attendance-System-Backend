@@ -1,7 +1,7 @@
 from django.test import TestCase
 from datetime import datetime
 
-import objects_for_tests
+import test_data.objects_for_tests as objects_for_tests
 
 class TestModels(TestCase):
 

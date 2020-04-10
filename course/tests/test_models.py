@@ -4,7 +4,7 @@ from course.models import Department, Timeslot, TimeSlotDetails, Course
 from faculty.models import Faculty
 import datetime
 
-import objects_for_tests
+import test_data.objects_for_tests as objects_for_tests
 
 class TestModels(TestCase):
 
