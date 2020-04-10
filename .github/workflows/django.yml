@@ -54,4 +54,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: sats14/sats-backend
-        tags: ${{GITHUB_SHA}}
+        tag_with_sha: true
