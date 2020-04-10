@@ -4,12 +4,14 @@ from student.models import Student
 from faculty.models import Faculty
 from course.models import Course, Timeslot
 
+from datetime import datetime
+
 # Create your models here.
 class Attendance(models.Model):
-    date_time = models.DateTimeField(auto_now=True)
+    date_time = models.DateTimeField(default= datetime.now())
 
     student = models.ForeignKey(Student, null=True, on_delete=models.SET_NULL)
-    faculty = models.ForeignKey(Faculty, null=True, on_delete=models.SET_NULL) 
+    faculty = models.ForeignKey(Faculty, null=True, on_delete=models.SET_NULL)
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     timeslot = models.ForeignKey(Timeslot, null=True, on_delete=models.SET_NULL) 

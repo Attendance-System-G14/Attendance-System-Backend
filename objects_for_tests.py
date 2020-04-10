@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from student.models import Student
 from faculty.models import Faculty
 from course.models import Course, Department, Timeslot, TimeSlotDetails
+from attendance.models import Attendance
+
 import datetime
 
 def variables():
@@ -102,6 +104,25 @@ def variables():
         timeslot= timeslot1
     )
 
+    #create Attendance object
+    date_str = "2020-04-10"
+    global date_time1
+    date_time1= datetime.datetime(
+        year= 2020,
+        month= 4,
+        day= 10,
+        hour= 8,
+        minute= 00,
+        second= 0,
+    )
+    global attendance1
+    attendance1= Attendance.objects.create(
+        date_time= date_time1,
+        student= student1,
+        faculty= faculty1,
+        course= course1,
+        timeslot= timeslot1,
+    )
 
 if __name__ == "__main__":
     variables()
