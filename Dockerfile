@@ -5,6 +5,10 @@ FROM python:3.8.0-alpine
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# install psycopg2 dependencies
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev
+
 # set work directory
 RUN mkdir /code
 WORKDIR /code
@@ -13,6 +17,14 @@ WORKDIR /code
 RUN pip install --upgrade pip
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
+RUN pip install psycopg2
+RUN pip install gunicorn
 
 # copy project
 COPY . /code/
+
+# Expose ports
+EXPOSE 8000
+
+# default command to execute    
+CMD exec gunicorn sats.wsgi:application --bind 0.0.0.0:8000
