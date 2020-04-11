@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions
 
 from student.models import StudentTakesCourse
-from course.serializers import CourseSerializer
+from student.serializers import StudentCourseSerializer
 
 from student.permissions import IsStudentUser
 
@@ -22,7 +22,6 @@ class StudentCoursesList(APIView):
         '''
             Returns Courses enrolled in by the student
         '''
-        student_takes_courses= StudentTakesCourse.objects.filter(student__user= request.user)   #get user field of the student field
-        courses= [student_takes_course.course for student_takes_course in student_takes_courses]
-        serializer= CourseSerializer(courses, many= True)
+        student_takes_courses= StudentTakesCourse.objects.filter(student__user= request.user)
+        serializer= StudentCourseSerializer(student_takes_courses, many= True)
         return Response(serializer.data)
